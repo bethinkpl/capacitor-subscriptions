@@ -87,7 +87,7 @@ import UIKit
     }
 
     @available(iOS 15.0.0, *)
-    @objc public func purchaseProduct(_ productIdentifier: String, _ userId: Numeric) async -> PluginCallResultData {
+    @objc public func purchaseProduct(_ productIdentifier: String, _ userId: String) async -> PluginCallResultData {
         
         do {
 
@@ -99,7 +99,8 @@ import UIKit
             };
             let result: Product.PurchaseResult = try await product.purchase(
                 options: [
-                    .custom(key: "userId", value: userId)
+                    .appAccountToken("e9ee8b63-a4f2-4326-8827-4f5048f54968")
+                    .custom(key: "userID", value: userId)
                 ]
             );
 
@@ -167,6 +168,7 @@ import UIKit
                 let transaction: Transaction? = checkVerified(verification) as? Transaction
                 if(transaction != nil) {
                     
+                    print("transaction", transaction);
                     transactionDictionary[String(transaction!.id)] = [
                         "productIdentifier": transaction!.productID,
                         "originalStartDate": transaction!.originalPurchaseDate,
@@ -174,6 +176,8 @@ import UIKit
                         "transactionId": transaction!.id,
                         "expiryDate": transaction!.expirationDate!,
                         "purchaseToken": ""
+                        "appAccountToken": transaction?.appAccountToken,
+                        "userId": transaction!.userID!
                     ]
                     
                 }
@@ -228,6 +232,7 @@ import UIKit
             print("expiration" + String(decoding: formatDate(transaction.expirationDate)!, as: UTF8.self))
             print("transaction.expirationDate", transaction.expirationDate!)
             print("transaction.originalID", transaction.originalID);
+            print("transaction", transaction);
             
             var receiptString = "";
             
@@ -259,7 +264,9 @@ import UIKit
                     "originalId": transaction.originalID,
                     "transactionId": transaction.id,
                     "expiryDate": transaction.expirationDate!,
-                    "purchaseToken": receiptString
+                    "purchaseToken": receiptString,
+                    "appAccountToken": transaction.appAccountToken!,
+                    "userId": transaction.userID!,
                 ]
             ];
             
@@ -285,7 +292,7 @@ import UIKit
     }
     
     @available(iOS 15.0.0, *)
-    @objc private func updateTrialDate(_ bid: String, _ formattedDate: Data?) {
+    @objc private func updateTrialDate(_ bid: String, _ formattedDate: Data?) {`
         
         let keyChainUpdateParams: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,

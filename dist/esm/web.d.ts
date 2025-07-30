@@ -15,7 +15,7 @@ export declare class SubscriptionsWeb extends WebPlugin implements Subscriptions
     }): Promise<ProductDetailsResponse>;
     purchaseProduct(options: {
         productIdentifier: string;
-        userId: number;
+        userId: string;
     }): Promise<PurchaseProductResponse>;
     getCurrentEntitlements(): Promise<CurrentEntitlementsResponse>;
     getLatestTransaction(options: {
