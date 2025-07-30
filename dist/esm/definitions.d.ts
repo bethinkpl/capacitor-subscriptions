@@ -1,4 +1,4 @@
-import { PluginListenerHandle } from "@capacitor/core";
+import type { PluginListenerHandle } from "@capacitor/core";
 export interface SubscriptionsPlugin {
     /**
      * A test method which just returns what is passed in
@@ -21,6 +21,7 @@ export interface SubscriptionsPlugin {
      */
     purchaseProduct(options: {
         productIdentifier: string;
+        userId: number;
     }): Promise<PurchaseProductResponse>;
     getCurrentEntitlements(): Promise<CurrentEntitlementsResponse>;
     getLatestTransaction(options: {

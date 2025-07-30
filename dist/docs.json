@@ -46,12 +46,12 @@
       },
       {
         "name": "purchaseProduct",
-        "signature": "(options: { productIdentifier: string; }) => Promise<PurchaseProductResponse>",
+        "signature": "(options: { productIdentifier: string; userId: number; }) => Promise<PurchaseProductResponse>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ productIdentifier: string; }"
+            "type": "{ productIdentifier: string; userId: number; }"
           }
         ],
         "returns": "Promise<PurchaseProductResponse>",
