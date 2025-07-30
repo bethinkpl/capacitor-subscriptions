@@ -1,5 +1,5 @@
 {
-  "name": "bethinkpl/capacitor-subscriptions",
+  "name": "@bethinkpl/capacitor-subscriptions",
   "version": "1.0.0",
   "description": "A capacitor plugin which simplifies subscription handling - implementing StoreKit 2 and Google Billing 7",
   "main": "dist/plugin.cjs.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "SquareetlabsCapacitorSubscriptions.podspec"
+    "BethinkplCapacitorSubscriptions.podspec"
   ],
   "author": {
     "name": "Bethink"
