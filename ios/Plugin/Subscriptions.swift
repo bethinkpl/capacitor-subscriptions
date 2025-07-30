@@ -87,7 +87,7 @@ import UIKit
     }
 
     @available(iOS 15.0.0, *)
-    @objc public func purchaseProduct(_ productIdentifier: String) async -> PluginCallResultData {
+    @objc public func purchaseProduct(_ productIdentifier: String, _ userId: Numeric) async -> PluginCallResultData {
         
         do {
 
@@ -97,7 +97,11 @@ import UIKit
                     "responseMessage": "Could not find a product matching the given productIdentifier"
                 ];
             };
-            let result: Product.PurchaseResult = try await product.purchase();
+            let result: Product.PurchaseResult = try await product.purchase(
+                options: [
+                    .custom(key: "userId", value: userId)
+                ]
+            );
 
             switch result {
 

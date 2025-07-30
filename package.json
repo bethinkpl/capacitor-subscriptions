@@ -1,6 +1,6 @@
 {
-  "name": "@squareetlabs/capacitor-subscriptions",
-  "version": "1.0.18",
+  "name": "bethinkpl/capacitor-subscriptions",
+  "version": "1.0.0",
   "description": "A capacitor plugin which simplifies subscription handling - implementing StoreKit 2 and Google Billing 7",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -14,7 +14,7 @@
     "SquareetlabsCapacitorSubscriptions.podspec"
   ],
   "author": {
-    "name": "Squareetlabs"
+    "name": "Bethink"
   },
   "contributors": [
     {
@@ -26,12 +26,17 @@
       "name": "Jacobo Cantorna Cigarrán",
       "email": "jacobo@squareet.com.com",
       "url": "https://squareet.com"
+    },
+    {
+      "name": "Sebastian Dawidziak",
+      "email": "sebastian.dawidziak@bethink.pl",
+      "url": "https://bethink.tech"
     }
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/squareetlabs/capacitor-subscriptions"
+    "url": "git+https://github.com/bethinkpl/capacitor-subscriptions"
   },
   "keywords": [
     "capacitor 6",

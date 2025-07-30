@@ -4,7 +4,7 @@ A capacitor plugin which simplifies subscription handling - implementing StoreKi
 ## Install
 
 ```bash
-npm install @squareetlabs/capacitor-subscriptions
+npm install @bethinkpl/capacitor-subscriptions
 ionic cap sync
 ```
 
