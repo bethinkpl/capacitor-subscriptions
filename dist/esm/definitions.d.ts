@@ -21,7 +21,7 @@ export interface SubscriptionsPlugin {
      */
     purchaseProduct(options: {
         productIdentifier: string;
-        userId: string;
+        appAccountToken: string;
     }): Promise<PurchaseProductResponse>;
     getCurrentEntitlements(): Promise<CurrentEntitlementsResponse>;
     getLatestTransaction(options: {
@@ -49,7 +49,6 @@ export interface Transaction {
     isTrial?: boolean;
     purchaseToken?: string;
     appAccountToken?: string;
-    userId?: string;
 }
 export interface LatestTransactionResponse {
     responseCode: LatestTransactionResponseCode;

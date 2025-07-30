@@ -46,12 +46,12 @@
       },
       {
         "name": "purchaseProduct",
-        "signature": "(options: { productIdentifier: string; userId: string; }) => Promise<PurchaseProductResponse>",
+        "signature": "(options: { productIdentifier: string; appAccountToken: string; }) => Promise<PurchaseProductResponse>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ productIdentifier: string; userId: string; }"
+            "type": "{ productIdentifier: string; appAccountToken: string; }"
           }
         ],
         "returns": "Promise<PurchaseProductResponse>",
@@ -347,13 +347,6 @@
         },
         {
           "name": "appAccountToken",
-          "tags": [],
-          "docs": "",
-          "complexTypes": [],
-          "type": "string | undefined"
-        },
-        {
-          "name": "userId",
           "tags": [],
           "docs": "",
           "complexTypes": [],

@@ -16,7 +16,7 @@ export interface SubscriptionsPlugin {
    * Receives the product ID which the user wants to purchase and returns the transaction ID
    * @param options.productId contains the productIdentifier
    */
-  purchaseProduct(options: { productIdentifier: string, userId: string }): Promise< PurchaseProductResponse >;
+  purchaseProduct(options: { productIdentifier: string, appAccountToken: string }): Promise< PurchaseProductResponse >;
 
 
   getCurrentEntitlements(): Promise< CurrentEntitlementsResponse >;
@@ -52,7 +52,6 @@ export interface Transaction {
   isTrial?: boolean;
   purchaseToken?: string;
   appAccountToken?: string;
-  userId?: string;
 }
 
 // latestTransactions interface and types

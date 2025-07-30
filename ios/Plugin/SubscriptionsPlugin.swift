@@ -43,14 +43,14 @@ public class SubscriptionsPlugin: CAPPlugin {
             return
         }
         
-        guard let userId = call.getString("userId") else {
-            call.reject("Must provide a userId")
+        guard let appAccountToken = call.getString("appAccountToken") else {
+            call.reject("Must provide a appAccountToken")
             return
         }
 
         Task {
             do {
-                let response = await implementation.purchaseProduct(productIdentifier, userId)
+                let response = await implementation.purchaseProduct(productIdentifier, appAccountToken)
                 call.resolve(response)
             }
         }

@@ -46,14 +46,14 @@ Receives a product ID and returns the product details
 ### purchaseProduct(...)
 
 ```typescript
-purchaseProduct(options: { productIdentifier: string; userId: string }) => Promise<PurchaseProductResponse>
+purchaseProduct(options: { productIdentifier: string; appAccountToken: string }) => Promise<PurchaseProductResponse>
 ```
 
 Receives the product ID which the user wants to purchase and returns the transaction ID
 
 | Param         | Type                                        |
 | ------------- | ------------------------------------------- |
-| **`options`** | <code>{ productIdentifier: string; userId: string }</code> |
+| **`options`** | <code>{ productIdentifier: string; appAccountToken: string }</code> |
 
 **Returns:** <code>Promise&lt;<a href="#purchaseproductresponse">PurchaseProductResponse</a>&gt;</code>
 

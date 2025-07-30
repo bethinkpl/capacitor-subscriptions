@@ -87,7 +87,7 @@ import UIKit
     }
 
     @available(iOS 15.0.0, *)
-    @objc public func purchaseProduct(_ productIdentifier: String, _ userId: String) async -> PluginCallResultData {
+    @objc public func purchaseProduct(_ productIdentifier: String, _ appAccountToken: UUID) async -> PluginCallResultData {
         
         do {
 
@@ -99,8 +99,7 @@ import UIKit
             };
             let result: Product.PurchaseResult = try await product.purchase(
                 options: [
-                    .appAccountToken("e9ee8b63-a4f2-4326-8827-4f5048f54968")
-                    .custom(key: "userID", value: userId)
+                    .appAccountToken(appAccountToken)
                 ]
             );
 
@@ -175,9 +174,8 @@ import UIKit
                         "originalId": transaction!.originalID,
                         "transactionId": transaction!.id,
                         "expiryDate": transaction!.expirationDate!,
-                        "purchaseToken": ""
-                        "appAccountToken": transaction?.appAccountToken,
-                        "userId": transaction!.userID!
+                        "purchaseToken": "",
+                        "appAccountToken": transaction!.appAccountToken!
                     ]
                     
                 }
@@ -265,8 +263,7 @@ import UIKit
                     "transactionId": transaction.id,
                     "expiryDate": transaction.expirationDate!,
                     "purchaseToken": receiptString,
-                    "appAccountToken": transaction.appAccountToken!,
-                    "userId": transaction.userID!,
+                    "appAccountToken": transaction.appAccountToken!
                 ]
             ];
             
