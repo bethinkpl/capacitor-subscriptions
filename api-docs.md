@@ -174,6 +174,11 @@ addListener(eventName: 'ANDROID-PURCHASE-RESPONSE', listenerFunc: (response: And
 | **`productIdentifier`** | <code>string</code> |
 | **`expiryDate`**        | <code>string</code> |
 | **`originalStartDate`** | <code>string</code> |
+| **`originalId`**        | <code>string</code> |
+| **`transactionId`**     | <code>string</code> |
+| **`purchaseToken`**     | <code>string</code> |
+| **`appAccountToken`**   | <code>string</code> |
+| **`isTrial`**           | <code>boolean</code> |
 
 
 #### LatestTransactionResponse

@@ -21,7 +21,7 @@ public class SubscriptionsPlugin: CAPPlugin {
     }
 
     
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc func getProductDetails(_ call: CAPPluginCall) {
         guard let productIdentifier = call.getString("productIdentifier") else {
             call.reject("Must provide a productID")
@@ -36,27 +36,33 @@ public class SubscriptionsPlugin: CAPPlugin {
         }
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc func purchaseProduct(_ call: CAPPluginCall) {
         guard let productIdentifier = call.getString("productIdentifier") else {
             call.reject("Must provide a productID")
             return
         }
-        
+
         guard let appAccountToken = call.getString("appAccountToken") else {
             call.reject("Must provide a appAccountToken")
+            return
+        }
+        
+        let uuidToken = UUID(uuidString: appAccountToken)
+        if (uuidToken == nil) {
+            call.reject("Invalid UUID")
             return
         }
 
         Task {
             do {
-                let response = await implementation.purchaseProduct(productIdentifier, appAccountToken)
+                let response = await implementation.purchaseProduct(productIdentifier, uuidToken!)
                 call.resolve(response)
             }
         }
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc func getCurrentEntitlements(_ call: CAPPluginCall) {
         Task {
             do {
@@ -67,7 +73,7 @@ public class SubscriptionsPlugin: CAPPlugin {
     }
 
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc func getLatestTransaction(_ call: CAPPluginCall) {
         guard let productIdentifier = call.getString("productIdentifier") else {
             call.reject("Must provide a productID")
@@ -82,7 +88,7 @@ public class SubscriptionsPlugin: CAPPlugin {
         }
     }
     
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc func manageSubscriptions(_ call: CAPPluginCall) {
         Task {
             do {

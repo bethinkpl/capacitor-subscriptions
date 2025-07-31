@@ -7,7 +7,7 @@ import UIKit
     
     override init() {
         super.init();
-        if #available(iOS 15.0.0, *) {
+        if #available(iOS 15.0, *) {
             let transactionListener = listenForTransactions();
             let unfinishedListener = finishTransactions();
         } else {
@@ -19,7 +19,7 @@ import UIKit
     // be queued for when the app is next opened. This listener handles any transactions
     // within the queue and finishes verified purchases to clear the queue and prevent
     // any bugs or performance issues occuring
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     private func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
 
@@ -40,7 +40,7 @@ import UIKit
         }
     }
     
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     private func finishTransactions() -> Task<Void, Error> {
         return Task.detached {
 
@@ -60,7 +60,7 @@ import UIKit
         }
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc public func getProductDetails(_ productIdentifier: String) async -> PluginCallResultData {
 
         guard let product: Product = await getProduct(productIdentifier) as? Product else {
@@ -86,7 +86,7 @@ import UIKit
         ];
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc public func purchaseProduct(_ productIdentifier: String, _ appAccountToken: UUID) async -> PluginCallResultData {
         
         do {
@@ -153,7 +153,7 @@ import UIKit
 
     }
     
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc public func getCurrentEntitlements() async -> PluginCallResultData {
 
         do {
@@ -175,7 +175,7 @@ import UIKit
                         "transactionId": transaction!.id,
                         "expiryDate": transaction!.expirationDate!,
                         "purchaseToken": "",
-                        "appAccountToken": transaction!.appAccountToken!
+                        "appAccountToken": transaction!.appAccountToken!.uuidString
                     ]
                     
                 }
@@ -207,7 +207,7 @@ import UIKit
 
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc public func getLatestTransaction(_ productIdentifier: String) async -> PluginCallResultData {
 
         do {
@@ -230,7 +230,6 @@ import UIKit
             print("expiration" + String(decoding: formatDate(transaction.expirationDate)!, as: UTF8.self))
             print("transaction.expirationDate", transaction.expirationDate!)
             print("transaction.originalID", transaction.originalID);
-            print("transaction", transaction);
             
             var receiptString = "";
             
@@ -263,7 +262,7 @@ import UIKit
                     "transactionId": transaction.id,
                     "expiryDate": transaction.expirationDate!,
                     "purchaseToken": receiptString,
-                    "appAccountToken": transaction.appAccountToken!
+                    "appAccountToken": transaction.appAccountToken!.uuidString
                 ]
             ];
             
@@ -271,7 +270,7 @@ import UIKit
 
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc public func manageSubscriptions() async {
         
         let manageTransactions: UIWindowScene
@@ -279,7 +278,7 @@ import UIKit
         
     }
     
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc private func formatDate(_ date: Date?) -> Data? {
      
         let df = DateFormatter();
@@ -288,8 +287,8 @@ import UIKit
         
     }
     
-    @available(iOS 15.0.0, *)
-    @objc private func updateTrialDate(_ bid: String, _ formattedDate: Data?) {`
+    @available(iOS 15.0, *)
+    @objc private func updateTrialDate(_ bid: String, _ formattedDate: Data?) {
         
         let keyChainUpdateParams: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -308,7 +307,7 @@ import UIKit
         
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc private func getProduct(_ productIdentifier: String) async -> Any? {
 
         do {
@@ -324,7 +323,7 @@ import UIKit
 
     }
 
-    @available(iOS 15.0.0, *)
+    @available(iOS 15.0, *)
     @objc private func checkVerified(_ vr: Any?) -> Any? {
 
         switch vr as? VerificationResult<Transaction> {
