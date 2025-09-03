@@ -147,7 +147,7 @@ import UIKit
             print(error.localizedDescription);
             return [
                 "responseCode": 5,
-                "responseMessage": "An unknown error occurred whilst in the purchasing process"
+                "responseMessage": "An unknown error occurred whilst in the purchasing process: " + error.localizedDescription
             ]
         }
 
