@@ -94,7 +94,7 @@ import UIKit
             guard let product: Product = await getProduct(productIdentifier) as? Product else {
                 return [
                     "responseCode": 1,
-                    "responseMessage": "Could not find a product matching the given productIdentifier"
+                    "responseMessage": "Could not find a product matching the given productIdentifier: " + productIdentifier
                 ];
             };
             let result: Product.PurchaseResult = try await product.purchase(
@@ -138,7 +138,7 @@ import UIKit
 
                     return [
                         "responseCode": 5,
-                        "responseMessage": "An unknown error occurred whilst in the purchasing process",
+                        "responseMessage": "An unknown error occurred whilst in the purchasing process: " + error.localizedDescription,
                     ]
                     
             }
