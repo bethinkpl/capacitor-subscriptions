@@ -1,6 +1,14 @@
 # Capacitor Subscription
 A capacitor plugin which simplifies subscription handling - implementing StoreKit 2 and Google Billing 7.
 
+> ## ⚠️ Android subscriptions are disabled in this fork
+>
+> The Android implementation has been removed from this plugin. We don't need subscriptions in our Android app, and shipping the plugin caused a Google Play issue because we were bundling an unsupported version of the billing library.
+>
+> Only iOS (StoreKit 2) is supported here. The Android sections below are kept for reference only.
+>
+> Context: [Slack thread](https://bethinkteam.slack.com/archives/C018TDAH5FW/p1784692173566899)
+
 ## Install
 
 ```bash
